@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import coinbasepro as cbp
 import time
 
@@ -87,11 +88,9 @@ while True:
 
     ethPrice = float(eth["price"])
 
-    if nextBuy():
-        if shouldBuy():
+    if nextBuy() and shouldBuy():
             buy()
-    else:
-        if shouldSell():
+    elif shouldSell():
             sell()
 
     time.sleep(60*60)
