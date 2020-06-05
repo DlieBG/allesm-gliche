@@ -110,7 +110,8 @@ while True:
     dt = float(f.read())
     f.close()
 
-    if nextBuy() and shouldBuy():
+    if nextBuy():
+        if shouldBuy():
             buy()
     elif shouldSell():
             sell()
