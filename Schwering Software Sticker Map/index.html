@@ -1,0 +1,43 @@
+<html lang="de">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <title>Schwering Software Sticker Map</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+   </head>
+
+   <body>
+      <div id='meineKarte' style='height: 100%; width: 100%;'></div>
+
+      <script type='text/javascript'>
+        var Karte = L.map('meineKarte').setView([51.845879, 6.8417191], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        'attribution': 'Schwering Software',
+        'useCache': true
+        }).addTo(Karte);
+      </script>
+
+      <script>
+        var sticker = [
+            ["51.8619107", "6.8631859", "gemen1.jpeg"],
+            ["51.8680915", "6.8686781", "gemen2.jpeg"],
+            ["51.870274", "6.8741533", "krückling1.jpeg"],
+            ["51.875366", "6.886556", "krückling2.jpeg"],
+            ["51.8847324", "6.8973144", "krückling3.jpeg"],
+            ["51.882794", "6.902131", "krückling4.jpeg"],
+            ["51.883637", "6.906664", "ramsdorf1.jpeg"],
+            ["51.8848633", "6.9087587", "ramsdorf2.jpeg"],
+        ];
+        
+        var SchweringSoftware = L.marker([51.845879, 6.841719]).addTo(Karte);
+        SchweringSoftware.bindPopup("Schwering Software").openPopup();
+
+         sticker.forEach(element => {
+            L.marker([element[0], element[1]]).addTo(Karte).bindPopup("<a href='img/"+element[2]+"'><img style='width: 250px' src='img/"+element[2]+"'></img></a>");
+
+         });
+      </script>
+
+   </body>
+</html>
