@@ -31,7 +31,7 @@
         ];
         
         var SchweringSoftware = L.marker([51.845879, 6.841719]).addTo(Karte);
-        SchweringSoftware.bindPopup("Schwering Software").openPopup();
+        SchweringSoftware.bindPopup("<img src='https://benedikt-schwering.de/media/SoftwareLogoFull.png' style='width:106px; align: center;'></img><br>Schwering Software").openPopup();
 
          sticker.forEach(element => {
             L.marker([element[0], element[1]]).addTo(Karte).bindPopup("<a href='img/"+element[2]+"'><img style='width: 250px' src='img/"+element[2]+"'></img></a>");
