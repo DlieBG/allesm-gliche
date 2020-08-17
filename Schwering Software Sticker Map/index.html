@@ -19,7 +19,7 @@
       </script>
 
       <script>
-        var sticker = [
+         var sticker = [
             ["51.8619107", "6.8631859", "gemen1.jpeg"],
             ["51.8680915", "6.8686781", "gemen2.jpeg"],
             ["51.870274", "6.8741533", "krückling1.jpeg"],
@@ -43,14 +43,23 @@
             ["51.9075023", "6.8736625", "weseke6.jpeg"],
             ["51.9134553", "6.8610845", "weseke7.jpeg"],
             ["51.9131361", "6.8600678", "weseke8.jpeg"],
-        ];
+         ];
         
-        var SchweringSoftware = L.marker([51.845879, 6.841719]).addTo(Karte);
-        SchweringSoftware.bindPopup("<img src='https://benedikt-schwering.de/media/SoftwareLogoFull.png' style='width:106px; align: center;'></img><br>Schwering Software").openPopup();
+         var SchweringSoftware = L.marker([51.845879, 6.841719]).addTo(Karte);
+         SchweringSoftware.bindPopup("<img src='https://benedikt-schwering.de/media/SoftwareLogoFull.png' style='width:106px; align: center;'></img><br>Schwering Software").openPopup();
 
-         sticker.forEach(element => {
-            L.marker([element[0], element[1]]).addTo(Karte).bindPopup("<a href='img/"+element[2]+"'><img style='width: 250px' src='img/"+element[2]+"'></img></a>");
-         });
+         const delay = ms => new Promise(res => setTimeout(res, ms));
+
+         async function stickerLoad()
+         {
+            for(var i=0; i<sticker.length; i++)
+            {
+               L.marker([sticker[i][0], sticker[i][1]]).addTo(Karte).bindPopup("<a href='img/"+sticker[i][2]+"'><img style='width: 250px' src='img/"+sticker[i][2]+"'></img></a>");
+               await delay(75);
+            }
+         }
+
+         window.onload = stickerLoad();
       </script>
 
    </body>
