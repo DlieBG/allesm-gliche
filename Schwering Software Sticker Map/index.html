@@ -65,6 +65,12 @@
             ["51.8561942", "6.8332428", "jannik1.jpeg"],
             ["51.8588021", "6.8374483", "jannik2.jpeg"],
             ["51.8600596", "6.8381969", "jannik3.jpeg"],
+            ["51.8381996", "6.854032", "max20.jpeg"],
+            ["51.8443717956543", "6.793124198913574", "max21.jpeg"],
+            ["51.9065773", "6.7775102", "jannik4.jpeg"],
+            ["51.768609", "6.8112971", "jannik5.jpeg"],
+            ["50.89792251586914", "6.4487223625183105", "max22.jpeg"],
+            ["50.8745002746582", "6.474736213684082", "max23.jpeg"],
          ];
         
          var SchweringSoftware = L.marker([51.845879, 6.841719]).addTo(Karte);
@@ -77,7 +83,7 @@
             for(var i=0; i<sticker.length; i++)
             {
                L.marker([sticker[i][0], sticker[i][1]]).addTo(Karte).bindPopup("<a href='img/"+sticker[i][2]+"'><img style='width: 250px' src='img/"+sticker[i][2]+"'></img></a>");
-               await delay(75);
+               await delay(50);
             }
          }
 
