@@ -1,1 +1,0 @@
-Diese Datei sollte nur im testbranch verfügbar sein.
