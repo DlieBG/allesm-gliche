@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Zufallsgenerator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body
+            {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            
+            textarea
+            {
+                width: 100%;
+                height: 60%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Schwering Software Zufallsgenerator
+        </h1>
+        <div>
+            Eingabe:<br>
+            <textarea id="input"></textarea>
+            <button onclick="zufall()">ZUFALL!</button>
+        </div>
+    </body>
+    <script>
+        function zufall()
+        {
+            var eintraege = document.getElementById('input').value.split('\n');
+            var ausgabe = eintraege[Math.floor(Math.random()*Math.floor(eintraege.length))];
+            alert(ausgabe);
+        }
+    </script>
+</html>

@@ -1,0 +1,97 @@
+<html lang="de">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <title>Schwering Software Sticker Map</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+   </head>
+
+   <body style="margin:0;">
+      <div id='meineKarte' style='height: 100%; width: 100%;'></div>
+
+      <script type='text/javascript'>
+        var Karte = L.map('meineKarte').setView([51.845879, 6.8417191], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        'attribution': 'Schwering Software',
+        'useCache': true
+        }).addTo(Karte);
+      </script>
+
+      <script>
+         var sticker = [
+            ["51.8619107", "6.8631859", "gemen1.jpeg"],
+            ["51.8680915", "6.8686781", "gemen2.jpeg"],
+            ["51.870274", "6.8741533", "krückling1.jpeg"],
+            ["51.875366", "6.886556", "krückling2.jpeg"],
+            ["51.8847324", "6.8973144", "krückling3.jpeg"],
+            ["51.882794", "6.902131", "krückling4.jpeg"],
+            ["51.883637", "6.906664", "ramsdorf1.jpeg"],
+            ["51.8848633", "6.9087587", "ramsdorf2.jpeg"],
+            ["51.907346", "6.901122", "ramsdorf3.jpeg"],
+            ["51.763054", "6.835466", "lore1.jpg"],
+            ["51.774144", "6.832431", "raesfeld1.jpg"],
+            ["51.781178", "6.829502", "raesfeld2.jpg"],
+            ["51.793480", "6.824779", "raesfeld3.jpg"],
+            ["51.774255", "6.832492", "raesfeld4.jpg"],
+            ["51.815932", "6.831375", "borken1.jpg"],
+            ["51.895233", "6.862126", "weseke1.jpeg"],
+            ["51.898636", "6.860965", "weseke2.jpeg"],
+            ["51.9083814", "6.8582104", "weseke3.jpeg"],
+            ["51.9038217", "6.8597465", "weseke4.jpeg"],
+            ["51.9059082", "6.8719397", "weseke5.jpeg"],
+            ["51.9075023", "6.8736625", "weseke6.jpeg"],
+            ["51.9134553", "6.8610845", "weseke7.jpeg"],
+            ["51.9131361", "6.8600678", "weseke8.jpeg"],
+            ["51.841064453125", "6.826686382293701", "max1.jpeg"],
+            ["51.83992004394531", "6.822991371154785", "max2.jpeg"],
+            ["51.83961486816406", "6.822021007537842", "max3.jpeg"],
+            ["51.839569", "6.821898", "max4.jpeg"],
+            ["51.83943176269531", "6.8214826583862305", "max5.jpeg"],
+            ["51.83779525756836", "6.815791130065918", "max6.jpeg"],
+            ["51.83619689941406", "6.810513496398926", "max7.jpeg"],
+            ["51.83602523803711", "6.808950424194336", "max8.jpeg"],
+            ["51.837379455566406", "6.8023295402526855", "max9.jpeg"],
+            ["51.83606719970703", "6.7981414794921875", "max10.jpeg"],
+            ["51.83515548706055", "6.796234130859375", "max11.jpeg"],
+            ["51.837303161621094", "6.791919708251953", "max12.jpeg"],
+            ["51.84090042114258", "6.802247524261475", "max13.jpeg"],
+            ["51.8407096862793", "6.806230068206787", "max14.jpeg"],
+            ["51.84265899658203", "6.81682825088501", "max15.jpeg"],
+            ["51.84392166137695", "6.819338321685791", "max16.jpeg"],
+            ["51.85081481933594", "6.827112197875977", "max17.jpeg"],
+            ["51.85298156738281", "6.8311285972595215", "max18.jpeg"],
+            ["51.8514518737793", "6.837695121765137", "max19.jpeg"],
+            ["51.8561942", "6.8332428", "jannik1.jpeg"],
+            ["51.8588021", "6.8374483", "jannik2.jpeg"],
+            ["51.8600596", "6.8381969", "jannik3.jpeg"],
+            ["51.8381996", "6.854032", "max20.jpeg"],
+            ["51.8443717956543", "6.793124198913574", "max21.jpeg"],
+            ["51.9065773", "6.7775102", "jannik4.jpeg"],
+            ["51.768609", "6.8112971", "jannik5.jpeg"],
+            ["50.89792251586914", "6.4487223625183105", "max22.jpeg"],
+            ["50.8745002746582", "6.474736213684082", "max23.jpeg"],
+            ["51.7463322", "6.8080629", "jannik6.jpeg"],
+            ["51.828365325927734", "6.754778861999512", "max24.jpeg"],
+            ["51.8365478515625", "6.615433692932129", "max25.jpeg"],
+         ];
+        
+         var SchweringSoftware = L.marker([51.845879, 6.841719]).addTo(Karte);
+         SchweringSoftware.bindPopup("<img src='https://benedikt-schwering.de/media/SoftwareLogoFull.png' style='width:106px; align: center;'></img><br>Schwering Software").openPopup();
+
+         const delay = ms => new Promise(res => setTimeout(res, ms));
+
+         async function stickerLoad()
+         {
+            for(var i=0; i<sticker.length; i++)
+            {
+               L.marker([sticker[i][0], sticker[i][1]]).addTo(Karte).bindPopup("<a href='img/"+sticker[i][2]+"'><img style='width: 250px' src='img/"+sticker[i][2]+"'></img></a>");
+               await delay(50);
+            }
+         }
+
+         window.onload = stickerLoad();
+      </script>
+
+   </body>
+</html>
