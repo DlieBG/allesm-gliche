@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import coinbasepro as cbp
 import time
 from pyfcm import FCMNotification
@@ -112,8 +113,7 @@ while True:
     if nextBuy():
         if shouldBuy():
             buy()
-    else:
-        if shouldSell():
+    elif shouldSell():
             sell()
 
     time.sleep(120)
