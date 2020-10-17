@@ -4,7 +4,7 @@
 -- Architecture        x86_64-linux-gnu-thread-multi             
 -- Target Database     sqlite3                                   
 -- Input file          02 db4 RDM.dia                            
--- Generated at        Sat Oct 17 18:39:56 2020                  
+-- Generated at        Sat Oct 17 19:45:31 2020                  
 -- Typemap for sqlite3 not found in input file                   
 
 -- get_constraints_drop 
@@ -34,131 +34,131 @@ drop table if exists Arbeit;
 -- get_schema_create
 
 create table Person (
-   PersonNr             not null,
-   Geburtsdatum                 ,
-   Geburtsort                   ,
-   Geschlecht                   ,
-   Staatsangehörigkeit          ,
-   Augenfarbe                   ,
-   Hautfarbe                    ,
-   PersonalausweisNr            ,
-   Mutter                       ,
-   Vater                        ,
+   PersonNr            INT         not null,
+   Geburtsdatum        DATE                ,
+   Geburtsort          VARCHAR(50)         ,
+   Geschlecht          VARCHAR(50)         ,
+   Staatsangehörigkeit VARCHAR(50)         ,
+   Augenfarbe          VARCHAR(50)         ,
+   Hautfarbe           VARCHAR(50)         ,
+   PersonalausweisNr   VARCHAR(50)         ,
+   Mutter              INT                 ,
+   Vater               INT                 ,
    constraint pk_Person primary key (PersonNr)
 )   ;
 
 create table Konto (
-   KontoNr       not null,
-   Person                ,
-   Dienst                ,
-   Benutzername          ,
-   Passwort              ,
-   Bemerkung             ,
+   KontoNr      INT          not null,
+   Person       INT                  ,
+   Dienst       INT                  ,
+   Benutzername VARCHAR(50)          ,
+   Passwort     VARCHAR(50)          ,
+   Bemerkung    VARCHAR(255)         ,
    constraint pk_Konto primary key (KontoNr)
 )   ;
 
 create table Dienst (
-   DienstNr      not null,
-   Name                  ,
-   Website               ,
-   Anmeldeseite          ,
-   Bemerkung             ,
+   DienstNr     INT          not null,
+   Name         VARCHAR(50)          ,
+   Website      VARCHAR(50)          ,
+   Anmeldeseite VARCHAR(50)          ,
+   Bemerkung    VARCHAR(255)         ,
    constraint pk_Dienst primary key (DienstNr)
 )   ;
 
 create table Person Beziehung (
-   PersonNr     not null,
-   BeziehungNr  not null,
-   constraint pk_Person Beziehung primary key (PersonNr,BeziehungNr)
+   Person    INT not null,
+   Beziehung INT not null,
+   constraint pk_Person Beziehung primary key (Person,Beziehung)
 )   ;
 
 create table Beziehung (
-   BeziehungNr  not null,
-   Startdatum           ,
-   Enddatum             ,
-   Bemerkung            ,
+   BeziehungNr INT          not null,
+   Startdatum  DATE                 ,
+   Enddatum    DATE                 ,
+   Bemerkung   VARCHAR(255)         ,
    constraint pk_Beziehung primary key (BeziehungNr)
 )   ;
 
 create table Person Gruppe (
-   PersonNr  not null,
-   GruppeNr  not null,
-   constraint pk_Person Gruppe primary key (PersonNr,GruppeNr)
+   Person INT not null,
+   Gruppe INT not null,
+   constraint pk_Person Gruppe primary key (Person,Gruppe)
 )   ;
 
 create table Gruppe (
-   GruppeNr   not null,
-   Name               ,
-   Bemerkung          ,
+   GruppeNr  INT          not null,
+   Name      VARCHAR(50)          ,
+   Bemerkung VARCHAR(255)         ,
    constraint pk_Gruppe primary key (GruppeNr)
 )   ;
 
 create table Gegenstand (
-   GegenstandNr  not null,
-   PersonNr              ,
-   GruppeNr              ,
-   Name                  ,
-   Bemerkung             ,
+   GegenstandNr INT          not null,
+   Person       INT                  ,
+   Gruppe       INT                  ,
+   Name         VARCHAR(50)          ,
+   Bemerkung    VARCHAR(255)         ,
    constraint pk_Gegenstand primary key (GegenstandNr)
 )   ;
 
 create table Eigenschaft (
-   EigenschaftNr  not null,
-   PersonNr               ,
-   Name                   ,
-   Bemerkung              ,
+   EigenschaftNr INT          not null,
+   Person        INT                  ,
+   Name          VARCHAR(50)          ,
+   Bemerkung     VARCHAR(255)         ,
    constraint pk_Eigenschaft primary key (EigenschaftNr)
 )   ;
 
 create table Ereignis (
-   EreignisNr  not null,
-   Person              ,
-   Datum               ,
-   Name                ,
-   Bemerkung           ,
+   EreignisNr INT          not null,
+   Person     INT                  ,
+   Datum      DATE                 ,
+   Name       VARCHAR(50)          ,
+   Bemerkung  VARCHAR(255)         ,
    constraint pk_Ereignis primary key (EreignisNr)
 )   ;
 
 create table Name (
-   NameNr      not null,
-   PersonNr            ,
-   Startdatum          ,
-   Enddatum            ,
-   Name                ,
-   Vorname             ,
-   Bemerkung           ,
+   NameNr     INT          not null,
+   Person     INT                  ,
+   Startdatum DATE                 ,
+   Enddatum   DATE                 ,
+   Name       VARCHAR(50)          ,
+   Vorname    VARCHAR(50)          ,
+   Bemerkung  VARCHAR(255)         ,
    constraint pk_Name primary key (NameNr)
 )   ;
 
 create table Adresse (
-   AdresseNr   not null,
-   PersonNr            ,
-   Startdatum          ,
-   Enddatum            ,
-   Strasse             ,
-   Hausnummer          ,
-   PLZ                 ,
-   Ort                 ,
-   Land                ,
-   Bemerkung           ,
+   AdresseNr  INT          not null,
+   Person     INT                  ,
+   Startdatum DATE                 ,
+   Enddatum   DATE                 ,
+   Strasse    VARCHAR(50)          ,
+   Hausnummer VARCHAR(50)          ,
+   PLZ        VARCHAR(50)          ,
+   Ort        VARCHAR(50)          ,
+   Land       VARCHAR(50)          ,
+   Bemerkung  VARCHAR(255)         ,
    constraint pk_Adresse primary key (AdresseNr)
 )   ;
 
 create table Bemerkung (
-   BemerkungNr  not null,
-   PersonNr             ,
-   Name                 ,
-   Bemerkung            ,
+   BemerkungNr INT          not null,
+   Person      INT                  ,
+   Name        VARCHAR(50)          ,
+   Bemerkung   VARCHAR(255)         ,
    constraint pk_Bemerkung primary key (BemerkungNr)
 )   ;
 
 create table Arbeit (
-   ArbeitNr   not null,
-   Person             ,
-   Stardatum          ,
-   Enddatum           ,
-   Name               ,
-   Bemerkung          ,
+   ArbeitNr  INT          not null,
+   Person    INT                  ,
+   Stardatum DATE                 ,
+   Enddatum  DATE                 ,
+   Name      VARCHAR(50)          ,
+   Bemerkung VARCHAR(255)         ,
    constraint pk_Arbeit primary key (ArbeitNr)
 )   ;
 
