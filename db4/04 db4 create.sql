@@ -1,0 +1,90 @@
+USE db4;
+
+DROP TABLE IF EXISTS Konto;
+DROP TABLE IF EXISTS Dienst;
+DROP TABLE IF EXISTS Person_Beziehung;
+DROP TABLE IF EXISTS Beziehung;
+DROP TABLE IF EXISTS Gegenstand;
+DROP TABLE IF EXISTS Person_Gruppe;
+DROP TABLE IF EXISTS Gruppe;
+DROP TABLE IF EXISTS Bemerkung;
+DROP TABLE IF EXISTS Adresse;
+DROP TABLE IF EXISTS Name;
+DROP TABLE IF EXISTS Ereignis;
+DROP TABLE IF EXISTS Eigenschaft;
+DROP TABLE IF EXISTS Arbeit;
+DROP TABLE IF EXISTS Person;
+
+
+CREATE TABLE IF NOT EXISTS Person(
+    PersonNr INT NOT NULL AUTO_INCREMENT,
+    Geburtsdatum DATE,
+    Geburtsort VARCHAR(50),
+    Geschlecht VARCHAR(50),
+    Staatsangehoerigkeit VARCHAR(50),
+    Augenfarbe VARCHAR(50),
+    Hautfarbe VARCHAR(50),
+    PersonalausweisNr VARCHAR(50),
+    Mutter INT,
+    Vater INT,
+    PRIMARY KEY(PersonNr)
+);
+
+CREATE TABLE IF NOT EXISTS Arbeit(
+    ArbeitNr INT NOT NULL AUTO_INCREMENT,
+    Person INT,
+    Startdatum DATE,
+    Enddatum DATE,
+    Name VARCHAR(50),
+    Bemerkung VARCHAR(255),
+    PRIMARY KEY(ArbeitNr),
+    FOREIGN KEY(Person) REFERENCES Person.PersonNr ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+CREATE TABLE IF NOT EXISTS Eigenschaft(
+
+);
+
+CREATE TABLE IF NOT EXISTS Ereignis(
+
+);
+
+CREATE TABLE IF NOT EXISTS Name(
+
+);
+
+CREATE TABLE IF NOT EXISTS Adresse(
+
+);
+
+CREATE TABLE IF NOT EXISTS Bemerkung(
+
+);
+
+CREATE TABLE IF NOT EXISTS Gruppe(
+
+);
+
+CREATE TABLE IF NOT EXISTS Person_Gruppe(
+
+);
+
+CREATE TABLE IF NOT EXISTS Gegenstand(
+
+);
+
+CREATE TABLE IF NOT EXISTS Beziehung(
+
+);
+
+CREATE TABLE IF NOT EXISTS Person_Beziehung(
+
+);
+
+CREATE TABLE IF NOT EXISTS Dienst(
+
+);
+
+CREATE TABLE IF NOT EXISTS Konto(
+
+);
