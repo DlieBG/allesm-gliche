@@ -1,3 +1,7 @@
+<?php
+	include("functions/db.php");
+?>
+
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -32,8 +36,8 @@
 	<div id="sidepanel">
 		<div id="profile">
 			<div class="wrap">
-				<img id="profile-img" src="https://benedikt-schwering.de/media/SoftwareLogo.png" class="online" alt="" />
-				<p>Benedikt Schwering</p>
+				<img id="profile-img" src="<?php echo($benutzer['Profilbild']);?>" class="online" alt="" />
+				<p><?php echo($benutzer['vollerName']);?></p>
 			</div>
 		</div>
 		<div id="search" hidden>
@@ -42,17 +46,7 @@
 		</div>
 		<div id="contacts">
 			<ul>
-				<li class="contact active">
-					<div class="wrap">
-						<span class="contact-status online"></span>
-						<img src="https://benedikt-schwering.de/media/SoftwareLogo.png" alt="" />
-						<div class="meta">
-							<p class="name">Benedikt Schwering</p>
-							<p class="preview">Mega cooler Typ!</p>
-						</div>
-					</div>
-				</li>
-				
+				<?php include('functions/getChatList.php'); ?>				
 		</div>
 		<div id="bottom-bar">
 			<button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Neuer Chat</span></button>
@@ -60,27 +54,9 @@
 		</div>
 	</div>
 	<div class="content">
-		<div class="contact-profile">
-			<img src="https://benedikt-schwering.de/media/SoftwareLogo.png" alt="" />
-			<p>Benedikt Schwering</p>
-			<div class="social-media">
-			</div>
-		</div>
-		<div class="messages">
-			<ul>
-				<li class="sent">
-					<img src="https://benedikt-schwering.de/media/SoftwareLogo.png" alt="" />
-					<p>Moin, hier ist Bene!</p>
-				</li>
-			</ul>
-		</div>
-		<div class="message-input">
-			<div class="wrap">
-			<input type="text" placeholder="Write your message..." />
-			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
-			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-			</div>
-		</div>
+		<?php
+			include("chat.php");
+		?>
 	</div>
 </div>
 <script src='https://production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
