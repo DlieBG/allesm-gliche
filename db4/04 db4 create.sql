@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS Kontaktinfo;
 DROP TABLE IF EXISTS Bemerkung;
 DROP TABLE IF EXISTS Adresse;
 DROP TABLE IF EXISTS Name;
+DROP TABLE IF EXISTS Person_Ereignis;
 DROP TABLE IF EXISTS Ereignis;
 DROP TABLE IF EXISTS Eigenschaft;
 DROP TABLE IF EXISTS Arbeit;
@@ -54,12 +55,18 @@ CREATE TABLE IF NOT EXISTS Eigenschaft(
 
 CREATE TABLE IF NOT EXISTS Ereignis(
     EreignisNr INT NOT NULL AUTO_INCREMENT,
-    Person INT,
     Datum DATE,
     Name VARCHAR(50),
     Bemerkung VARCHAR(255),
-    PRIMARY KEY(EreignisNr),
-    FOREIGN KEY(Person) REFERENCES Person(PersonNr) ON UPDATE CASCADE
+    PRIMARY KEY(EreignisNr)
+);
+
+CREATE TABLE IF NOT EXISTS Person_Ereignis(
+    Person INT NOT NULL,
+    Ereignis INT NOT NULL,
+    PRIMARY KEY(Person, Ereignis),
+    FOREIGN KEY(Person) REFERENCES Person(PersonNr) ON UPDATE CASCADE,
+    FOREIGN KEY(Ereignis) REFERENCES Ereignis(EreignisNr) ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Name(
