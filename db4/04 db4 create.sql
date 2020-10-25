@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS Person_Ereignis;
 DROP TABLE IF EXISTS Ereignis;
 DROP TABLE IF EXISTS Eigenschaft;
 DROP TABLE IF EXISTS Arbeit;
+DROP TABLE IF EXISTS Standort;
 DROP TABLE IF EXISTS Person;
 
 
@@ -31,6 +32,16 @@ CREATE TABLE IF NOT EXISTS Person(
     Mutter INT,
     Vater INT,
     PRIMARY KEY(PersonNr)
+);
+
+CREATE TABLE IF NOT EXISTS Standort(
+    StandortNr INT NOT NULL AUTO_INCREMENT,
+    Person INT,
+    Zeit TIMESTAMP,
+    Laenge FLOAT,
+    Breite FLOAT,
+    PRIMARY KEY(StandortNr),
+    FOREIGN KEY(Person) REFERENCES Person(PersonNr) ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Arbeit(
