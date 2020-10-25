@@ -1,0 +1,23 @@
+USE bikehunt;
+
+DROP TABLE IF EXISTS Standort;
+DROP TABLE IF EXISTS Team;
+
+
+CREATE TABLE IF NOT EXISTS Team(
+    TeamNr INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Beschreibung VARCHAR(250),
+    Rolle INT,
+    PRIMARY KEY(TeamNr)
+);
+
+CREATE TABLE IF NOT EXISTS Standort(
+    StandortNr INT NOT NULL AUTO_INCREMENT,
+    Team INT,
+    Zeit TIMESTAMP,
+    Laenge FLOAT,
+    Breite FLOAT,
+    PRIMARY KEY(StandortNr),
+    FOREIGN KEY(Team) REFERENCES Team(TeamNr) ON UPDATE CASCADE
+);
