@@ -1,0 +1,28 @@
+#loginForm
+{
+    padding: 1em;
+}
+
+#loginSubmit
+{
+    margin-left: 1em;
+}
+
+#map 
+{
+    height: 100vh;
+}
+
+#bikemap
+{
+    height: 100%; 
+    width: 100%;
+}
+
+#info
+{
+    z-index: 1000;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

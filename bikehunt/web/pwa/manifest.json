@@ -5,7 +5,7 @@
       "src": "https://benedikt-schwering.de/media/SoftwareLogo.png",
         "type": "image/png"
       }],
-    "start_url": "https://benedikt-schwering.de/bikehunt",
+    "start_url": "https://benedikt-schwering.de/bikehunt/index.php",
     "display": "standalone",
     "background_color": "#000",
     "theme_color": "#000"
