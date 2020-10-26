@@ -1,0 +1,12 @@
+{
+    "name": "Bike Hunt",
+    "short_name": "Bike Hunt",
+    "icons": [{
+      "src": "https://benedikt-schwering.de/media/SoftwareLogo.png",
+        "type": "image/png"
+      }],
+    "start_url": "https://benedikt-schwering.de/bikehunt",
+    "display": "standalone",
+    "background_color": "#000",
+    "theme_color": "#000"
+  }
