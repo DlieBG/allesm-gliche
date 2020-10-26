@@ -12,7 +12,16 @@ function initialiseMap()
 
     marker = L.marker([0,0]).addTo(Karte);  
 
+    update();
+}
+
+async function update()
+{
+    navigator.geolocation.getCurrentPosition(updateLocation, function(error){alert("Fehler bei Standortbestimmung!");}, {enableHighAccuracy: true});
     updateMarker();
+
+    await delay(5000);
+    update();
 }
 
 async function updateMarker()
@@ -20,39 +29,23 @@ async function updateMarker()
     fetch('functions/getLocation.php')
     .then(response => response.json())
     .then(data => {
-        if(data!==null){
+        if(data!==null)
+        {
             marker.removeFrom(Karte);
             marker = L.marker([data["Breite"], data["Laenge"]])
                 .addTo(Karte)
                 .bindPopup("<b style='font-size: 1.2em;'>"+data["Name"]+"</b><br>"+data["Beschreibung"]+"<br>"+data["Zeit"]);
         }
     });
-
-    await delay(5000);
-    updateMarker();
-}
-
-async function initialisePosition()
-{
-    if ('geolocation' in navigator) 
-    {
-        navigator.geolocation.getCurrentPosition(updateLocation, function(error){alert("Fehler bei Standortbestimmung!");}, {enableHighAccuracy: true});
-        navigator.geolocation.watchPosition(updateLocation);
-    }
-    else
-        alert("Browser nicht geeignet!");
 }
 
 async function updateLocation(location)
 {
     fetch('functions/updateLocation.php', {
         method: 'post',
-        headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-        },
+        headers: {"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"},
         body: 'longitude=' + location.coords.longitude + '+&latitude=' + location.coords.latitude
     });
 }
 
 window.onload = initialiseMap();
-window.onload = initialisePosition();
