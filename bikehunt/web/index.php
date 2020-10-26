@@ -56,7 +56,9 @@
       </div>
 
       <div id="info">
-        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#infoModal"><i class="material-icons">group</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" id="block"><i class="material-icons">block</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light green" id="live"><i class="material-icons">gps_fixed</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light amber modal-trigger" href="#infoModal"><i class="material-icons">group</i></a>
       </div>
 
       <div id="infoModal" class="modal">

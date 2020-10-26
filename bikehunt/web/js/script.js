@@ -48,4 +48,20 @@ async function updateLocation(location)
     });
 }
 
+$('#block').click(function() {
+    fetch('functions/setBlock.php')
+    .then(response => response.text())
+    .then(text => {
+        alert(text);
+    });
+});
+
+$('#live').click(function() {
+    fetch('functions/setLive.php')
+    .then(response => response.text())
+    .then(text => {
+        alert(text);
+    });
+});
+
 window.onload = initialiseMap();
