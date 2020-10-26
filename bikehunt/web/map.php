@@ -26,9 +26,14 @@
 
          async function stickerLoad()
          {
-            fetch('functions/getLastLocation.php')
+            fetch('functions/getLocation.php')
                .then(response => response.json())
-               .then(data => {if(data!==null){marker.removeFrom(Karte); marker = L.marker([data["Breite"], data["Laenge"]]).addTo(Karte).bindPopup("<b style='font-size: 1.2em;'>"+data["Name"]+"</b><br>"+data["Beschreibung"]+"<br>"+data["Zeit"]);}});
+               .then(data => {
+                  if(data!==null){
+                     marker.removeFrom(Karte);
+                     marker = L.marker([data["Breite"], data["Laenge"]]).addTo(Karte).bindPopup("<b style='font-size: 1.2em;'>"+data["Name"]+"</b><br>"+data["Beschreibung"]+"<br>"+data["Zeit"]);
+                  }
+               });
 
             await delay(5000);
             stickerLoad();
