@@ -48,11 +48,17 @@ async function updateLocation(location)
     });
 }
 
+function showAlert(message)
+{
+    $('#alert').text(message);
+    M.Modal.getInstance($('#alertModal')).open();
+}
+
 $('#block').click(function() {
     fetch('functions/setBlock.php')
     .then(response => response.text())
     .then(text => {
-        alert(text);
+        showAlert(text);
     });
 });
 
@@ -60,7 +66,7 @@ $('#live').click(function() {
     fetch('functions/setLive.php')
     .then(response => response.text())
     .then(text => {
-        alert(text);
+        showAlert(text);
     });
 });
 
